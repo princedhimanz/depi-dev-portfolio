@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

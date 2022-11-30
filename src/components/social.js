@@ -45,7 +45,7 @@ const StyledSocialList = styled.ul`
 `;
 
 const Social = ({ isHome }) => {
-  const darkMode = useDarkMode();
+  const darkMode = useDarkMode(false);
   const toggleDarkMode = e => {
     e.preventDefault();
     darkMode.toggle();

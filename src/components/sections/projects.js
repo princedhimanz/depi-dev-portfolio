@@ -70,6 +70,7 @@ const StyledProject = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
+    border: 1px solid #93939336;
     border-radius: var(--border-radius);
     background-color: var(--light-navy);
     transition: var(--transition);

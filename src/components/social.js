@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { socialMedia } from '@config';
 import { Side } from '@components';
-import { Icon } from '@components/icons';
+import { Icon, IconSun, IconMoon } from '@components/icons';
+import useDarkMode from 'use-dark-mode';
 
 const StyledSocialList = styled.ul`
   display: flex;
@@ -43,20 +44,37 @@ const StyledSocialList = styled.ul`
   }
 `;
 
-const Social = ({ isHome }) => (
-  <Side isHome={isHome} orientation="left">
-    <StyledSocialList>
-      {socialMedia &&
-        socialMedia.map(({ url, name }, i) => (
-          <li key={i}>
-            <a href={url} aria-label={name} target="_blank" rel="noreferrer">
-              <Icon name={name} />
-            </a>
-          </li>
-        ))}
-    </StyledSocialList>
-  </Side>
-);
+const Social = ({ isHome }) => {
+  const darkMode = useDarkMode(false);
+  const toggleDarkMode = e => {
+    e.preventDefault();
+    darkMode.toggle();
+  };
+  return (
+    <Side isHome={isHome} orientation="left">
+      <StyledSocialList>
+        <li key="darkToggle">
+          <a
+            href="/"
+            aria-label="darkMode"
+            target="_blank"
+            rel="noreferrer"
+            onClick={toggleDarkMode}>
+            {darkMode.value ? <IconMoon /> : <IconSun />}
+          </a>
+        </li>
+        {socialMedia &&
+          socialMedia.map(({ url, name }, i) => (
+            <li key={i}>
+              <a href={url} aria-label={name} target="_blank" rel="noreferrer">
+                <Icon name={name} />
+              </a>
+            </li>
+          ))}
+      </StyledSocialList>
+    </Side>
+  );
+};
 
 Social.propTypes = {
   isHome: PropTypes.bool,
